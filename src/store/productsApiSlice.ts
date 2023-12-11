@@ -21,7 +21,7 @@ export const productsApiSlice = createApi({
     }),
     endpoints: (builder) => ({
         fetchProducts: builder.query<{ products: Product[] }, number | void>({
-            query: (limit = 10, skip = 0) => `/products?limit=${limit}&skip=${skip}`
+            query: (limit = 12, skip = 0) => `/products?limit=${limit}&skip=${skip}`
         })
     })
 })
