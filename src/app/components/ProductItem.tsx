@@ -1,4 +1,5 @@
 import {Product} from '@/store/productsApiSlice'
+import RatingOverview from '@/app/components/RatingOverview'
 
 const ProductItem = (product: Product) => (
     <div className="bg-white w-1/3 md:w-1/4 xl:w-1/5 grow text-black cursor-pointer relative flex flex-col group">
@@ -7,10 +8,11 @@ const ProductItem = (product: Product) => (
                  className="aspect-square object-cover object-left-top"
                  alt=""/>
 
-            <p className="text-sm text-black/50 font-bold">{product.brand}</p>
-            <p className="font-bold">{product.title}</p>
-            <p>&euro; {product.price}</p>
-            <p className="text-sm">{product.rating}</p>
+            {!product.stock && (<p className="text-xs text-black/50 font-bold">Out of stock</p>)}
+            <p className="text-xs text-black/50 font-bold">{product.brand}</p>
+            <p className="font-bold text-sm">{product.title}</p>
+            <p className="font-bold mt-3">&euro; {product.price}</p>
+            <RatingOverview id={product.id} rating={product.rating}/>
         </div>
 
         <button type="button"
