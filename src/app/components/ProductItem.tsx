@@ -3,9 +3,12 @@ import RatingOverview from '@/app/components/RatingOverview'
 import {HeartOutline, ShareSocialOutline} from 'react-ionicons'
 import ProductNotification from '@/app/components/ProductNotification'
 import {useState} from 'react'
+import {useAppDispatch} from '@/app/hooks'
+import {addProduct} from '@/store/basketSlice'
 
 const ProductItem = (product: Product) => {
     const [showNotification, setShowNotification] = useState(false)
+    const dispatch = useAppDispatch()
 
     return (
         <div className="bg-white w-1/3 md:w-1/4 xl:w-1/5 grow text-black relative flex flex-col group">
@@ -50,6 +53,7 @@ const ProductItem = (product: Product) => {
                         }
 
                         setShowNotification(true)
+                        dispatch(addProduct(product))
                     }}
                     className={`border-t border-gray-500 w-full mt-auto py-3 bg-black group-hover:bg-white font-black text-xs${!product.stock ? ' cursor-not-allowed text-black/50' : ' cursor-pointer'}`}>
                 ADD TO BASKET
