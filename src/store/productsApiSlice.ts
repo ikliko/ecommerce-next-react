@@ -20,7 +20,7 @@ export const productsApiSlice = createApi({
         baseUrl: 'https://dummyjson.com'
     }),
     endpoints: (builder) => ({
-        fetchProducts: builder.query<{ products: Product }, number | void>({
+        fetchProducts: builder.query<{ products: Product[] }, number | void>({
             query: (limit = 10, skip = 0) => `/products?limit=${limit}&skip=${skip}`
         })
     })
