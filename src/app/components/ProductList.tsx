@@ -1,17 +1,11 @@
 import {useFetchProductsQuery} from '@/store/productsApiSlice'
+import ProductItem from '@/app/components/ProductItem'
 
 const ProductList = () => {
     const {data = {products: []}} = useFetchProductsQuery()
 
     return (<div>
-        {data.products.map(product => (<div key={`product-${product.id}`}>
-            <img src={product.images[0]} alt=""/>
-
-            <p>{product.brand}</p>
-            <p>{product.title}</p>
-            <p>{product.price}</p>
-            <p>{product.rating}</p>
-        </div>))}
+        {data.products.map(product => (<ProductItem key={`product-${product.id}`} {...product}/>))}
     </div>)
 }
 
