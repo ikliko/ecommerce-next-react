@@ -1,6 +1,6 @@
 import {Star, StarHalf, StarOutline} from 'react-ionicons'
 
-const RatingOverview = ({id, rating}: { id: number, rating: number }) => {
+const RatingOverview = ({id, rating, ratedCount}: { id: number, rating: number, ratedCount: number }) => {
     const fullStars = Math.floor(rating)
     const halfStar = rating - fullStars > 0.49
     const stars = Array.from(Array(5)).map((e, i) => {
@@ -16,7 +16,7 @@ const RatingOverview = ({id, rating}: { id: number, rating: number }) => {
     })
 
     return (<div className="flex gap-1">
-        {stars} <div className="text-xs">{rating}</div>
+        {stars} <div className="text-xs font-bold text-black/50">{rating} <span className="font-normal">({ratedCount})</span></div>
     </div>)
 }
 

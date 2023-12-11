@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {toss} from '@/helpers/utils'
+import {rnd, toss} from '@/helpers/utils'
 
 export interface Product {
     id: number
@@ -8,11 +8,13 @@ export interface Product {
     price: number
     discountPercentage: number
     rating: number
+    ratedCount: number
     stock: number
     brand: string
     category: string
     thumbnail: string
     images: string[]
+    isNew: boolean
 }
 
 export const productsApiSlice = createApi({
@@ -27,8 +29,16 @@ export const productsApiSlice = createApi({
                 ...response,
                 products: response.products.map(product => ({
                     ...product,
-                    stock: toss() ? product.stock : 0
-                }))
+                    stock: toss() ? product.stock : 0,
+                    ratedCount: rnd(20, 89),
+                    isNew: toss(),
+                    discountPercentage: toss() ? product.discountPercentage : 0
+                })).sort((a: Product, b: Product) => {
+                    if(!a.stock) return 1
+                    if(!b.stock) return -1
+
+                    return 0
+                })
             })
         })
     })
