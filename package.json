@@ -1,5 +1,5 @@
 {
-  "name": "next-basket",
+  "name": "next-basket-store",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
+    "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "react-ionicons": "^4.2.1",
+    "react-redux": "^9.0.2"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.2.41",
+    "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8",
+    "react-router-dom": "^6.20.1",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }
