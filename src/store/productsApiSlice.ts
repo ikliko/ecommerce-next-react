@@ -33,12 +33,7 @@ export const productsApiSlice = createApi({
                     ratedCount: rnd(20, 89),
                     isNew: toss(),
                     discountPercentage: toss() ? product.discountPercentage : 0
-                })).sort((a: Product, b: Product) => {
-                    if(!a.stock) return 1
-                    if(!b.stock) return -1
-
-                    return 0
-                })
+                })).sort((a: Product, b: Product) => b.stock - a.stock)
             })
         })
     })
